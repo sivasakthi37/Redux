@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
 import { createPost } from '../action/postaction';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import Childcomponent from './childcomponent';
+import showResults from '../ShowResult';
 /**
  * @description:This Component is for Login UI.. 
  */
@@ -72,13 +74,20 @@ class PostForm extends Component {
                     <br />
                     <button type="submit">Submit</button>
                 </form>
+                <Childcomponent onSubmit={showResults}  />
             </div>
         )
     }
 }
-PostForm.propTypes = {
-    createPost: PropTypes.func.isRequired
-  };
-  
-  export default connect(null, { createPost })(PostForm);
+// PostForm.propTypes = {
+//     createPost: PropTypes.func.isRequired
+//   };
+const mapStateToProps = state => ({
+
+    post: state.posts.items,
+    newPost: state.posts.item
+});
+
+
+export default connect( mapStateToProps, { createPost })(PostForm);
 // export default Post;

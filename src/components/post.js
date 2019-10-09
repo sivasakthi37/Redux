@@ -17,16 +17,13 @@ class Post extends Component {
         //     .then((data) => {
         //         console.log("dataaa in post -->", data);
         //         this.setState({ post: data })
-
         //     });
-        this.props.fetchPosts();
-       console.log("this.props.post",this.props.post);
+        // this.props.fetchPosts("hai");
+    //    console.log("this.props.post",this.props.post);
     }
-
     render() {
-
+      
         var postitem = this.props.post.map(post => (
-
             <div>
                 <h3>
                     {post.title}
@@ -38,6 +35,7 @@ class Post extends Component {
         return (
             <div>
                 <p>{ postitem }</p>
+              
             </div>
         )
     }
@@ -45,7 +43,7 @@ class Post extends Component {
 const mapStateToProps = state => ({
     
     post: state.posts.items,
-    // newPost: state.posts.item
+    newPost: state.posts.item
   });
   
 
